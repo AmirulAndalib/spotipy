@@ -18,6 +18,28 @@ $env:SPOTIPY_CLIENT_USERNAME="client_username_here"
 $env:SPOTIPY_REDIRECT_URI="http://localhost:8080" 
 ```
 
+### Branch Overview
+
+After restarting development on version 3, we decided to restrict commits to certain branches in order to push the development forward.
+To give you a flavour of what we mean, here are some examples of what PRs go where:
+
+**v3**:
+
+- any kind of refactoring
+- better documentation
+- enhancements
+- code styles
+
+**master (v2)**:
+
+- bug fixes
+- deprecations
+- new endpoints (until we release v3)
+- basic functionality
+
+Just choose v3 if you are unsure which branch to work on.
+
+
 ### Create virtual environment, install dependencies, run tests:
 
 ```bash
@@ -29,20 +51,23 @@ $ source env/bin/activate
 
 ### Lint
 
-To automatically fix the code style:
+    pip install .[test]
 
-    pip install autopep8
+To automatically fix some of the code style:
+
     autopep8 --in-place --aggressive --recursive .
 
 To verify the code style:
 
-    pip install flake8
     flake8 .
 
 To make sure if the import lists are stored correctly:
 
-    pip install isort
-    isort . -c -v
+    isort . -c
+
+Sort them automatically with:
+
+    isort .
 
 ### Changelog
 
@@ -55,9 +80,9 @@ Don't forget to add a short description of your change in the [CHANGELOG](CHANGE
  - Add to changelog:
 
        ## Unreleased
+       Add your changes below.
 
        ### Added
-       - Replace with changes
 
        ### Fixed
 
@@ -68,3 +93,4 @@ Don't forget to add a short description of your change in the [CHANGELOG](CHANGE
  - Create github release https://github.com/plamere/spotipy/releases with the changelog content
    for the version and a short name that describes the main addition
  - Verify doc uses latest https://readthedocs.org/projects/spotipy/
+ 
